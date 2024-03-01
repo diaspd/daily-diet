@@ -9,9 +9,11 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/nunito": "^0.2.3",
     "@types/react": "~18.2.45",
     "babel-plugin-module-resolver": "^5.0.0",
     "expo": "~50.0.8",
+    "expo-font": "^11.10.3",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
     "react-native": "0.73.4",
