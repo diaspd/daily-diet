@@ -1,6 +1,11 @@
 import styled, { useTheme } from "styled-components/native";
-
 import { ArrowLeft } from 'phosphor-react-native';
+
+export type ButtonIconTypeStyleProps = 'PRIMARY' | 'SECONDARY';
+
+export type ButtonIconStyleProps = {
+  type: ButtonIconTypeStyleProps;
+}
 
 export const Container = styled.View`
   width: 100%;
@@ -15,9 +20,9 @@ export const BackButton = styled.TouchableOpacity`
   flex: 1;
 `
 
-export const BackIcon = styled(ArrowLeft).attrs(() => ({
+export const BackIcon = styled(ArrowLeft).attrs<ButtonIconStyleProps>(({type}: ButtonIconStyleProps) => ({
   size: 36,
-  color: useTheme().COLORS.GRAY_700,
+  color: type === 'PRIMARY' ? useTheme().COLORS.GREEN_700 : useTheme().COLORS.RED_700,
 }))`
 `
 

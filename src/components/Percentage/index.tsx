@@ -1,12 +1,26 @@
-import { Container, Desciption, StatisticsIcon, Title } from './styles';
+import { TouchableOpacityProps } from 'react-native';
+import { ButtonIconTypeStyleProps, Container, Desciption, StatisticsIcon, Title } from './styles';
 
-export function Percentage() {
+import { useNavigation } from "@react-navigation/native";
+
+type PercentageProps = TouchableOpacityProps & {
+  title: string
+  type?: ButtonIconTypeStyleProps;
+}
+
+export function Percentage({title, type = 'PRIMARY', ...rest }: PercentageProps) {
+  const navigation = useNavigation()
+
+  function handleGoToStatistics() {
+    navigation.navigate('statistics');
+  }
+  
   return (
-    <Container>
-      <StatisticsIcon weight='bold' />
+    <Container {...rest} onPress={handleGoToStatistics}>
+      <StatisticsIcon weight='bold' type={type} />
 
       <Title>
-        90,86%
+        {title}
       </Title>
 
       <Desciption>

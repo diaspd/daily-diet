@@ -2,6 +2,12 @@ import styled, { css, useTheme } from "styled-components/native";
 import { ArrowUpRight } from 'phosphor-react-native';
 import { TouchableOpacity } from "react-native";
 
+export type ButtonIconTypeStyleProps = 'PRIMARY' | 'SECONDARY';
+
+type ButtonIconStyleProps = {
+  type: ButtonIconTypeStyleProps;
+}
+
 export const Container = styled(TouchableOpacity)`
   width: 100%;
   height: 102px;
@@ -15,9 +21,9 @@ export const Container = styled(TouchableOpacity)`
   background-color: ${() => useTheme().COLORS.GREEN_300};
 `;
 
-export const StatisticsIcon = styled(ArrowUpRight).attrs(() => ({
+export const StatisticsIcon = styled(ArrowUpRight).attrs<ButtonIconStyleProps>(({ type }) => ({
   size: useTheme().FONT_SIZE.XL,
-  color: useTheme().COLORS.GREEN_700,
+  color: type === 'PRIMARY' ? useTheme().COLORS.GREEN_700 : useTheme().COLORS.RED_700,
   fontFamily: useTheme().FONT_FAMILY.BOLD,
 }))`
   margin-left: auto;
