@@ -32,7 +32,7 @@ export const AvatarContainer = styled.View`
   
   width: 55px;
   height: 55px;
-  border-color: ${() => useTheme().COLORS.GRAY_700};
+  border-color: ${() => useTheme().COLORS.GRAY_600};
   border: 3px;
   border-radius: 100px;
 `
