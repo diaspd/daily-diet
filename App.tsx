@@ -8,7 +8,7 @@ import { Loading } from '@components/Loading/index';
 import { Routes } from '@routes/index';
 
 export default function App() {
-  const [isFontsLoaded] = useFonts([ Nunito_400Regular, Nunito_700Bold])
+  const [isFontsLoaded] = useFonts({ Nunito_400Regular, Nunito_700Bold})
 
   return (
     <ThemeProvider theme={theme}>
