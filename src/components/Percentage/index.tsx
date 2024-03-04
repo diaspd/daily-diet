@@ -8,8 +8,16 @@ type PercentageProps = TouchableOpacityProps & {
   type?: ButtonIconTypeStyleProps;
 }
 
-export function Percentage({title, type = 'PRIMARY', ...rest }: PercentageProps) {
+export function Percentage({title, type,...rest }: PercentageProps) {
   const navigation = useNavigation()
+
+  if(Number(title) <= 50) {
+    type="SECONDARY"
+  } else {
+    type="PRIMARY"
+  }
+
+  console.log(title, type)
 
   function handleGoToStatistics() {
     navigation.navigate('statistics');
@@ -20,7 +28,7 @@ export function Percentage({title, type = 'PRIMARY', ...rest }: PercentageProps)
       <StatisticsIcon weight='bold' type={type} />
 
       <Title>
-        {title}
+        {title}%
       </Title>
 
       <Desciption>
