@@ -40,10 +40,11 @@ export const AvatarContainer = styled.View`
   border-color: ${() => useTheme().COLORS.GRAY_600};
   border: 3px;
   border-radius: 100px;
+  box-sizing: border-box;
   object-fit: cover;
 `
 export const Avatar = styled.Image`
-  width: 48px;
+  width: 49px;
   height: 49px;
   border-radius: 100px;
 `

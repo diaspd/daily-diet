@@ -10,7 +10,8 @@ type ButtonIconStyleProps = {
 
 export const Container = styled(TouchableOpacity)`
   width: 100%;
-  height: 102px;
+  height: 112px;
+  padding: 16px 24px;
 
   margin-top: 32px;
   border-radius: 8px;
@@ -27,7 +28,7 @@ export const StatisticsIcon = styled(ArrowUpRight).attrs<ButtonIconStyleProps>((
   fontFamily: useTheme().FONT_FAMILY.BOLD,
 }))`
   margin-left: auto;
-  margin-right: 12px;
+  margin-right: -12px;
   margin-top: -10px;
 `
 
