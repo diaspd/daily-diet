@@ -7,7 +7,7 @@ export function Statistics() {
     <Container>
       <Header isBackButtonVisible />
 
-      <Percentage title={'90'} />
+      <Percentage title={'90,00'} />
     </Container>
   );
 }

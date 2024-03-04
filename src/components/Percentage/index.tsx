@@ -11,13 +11,11 @@ type PercentageProps = TouchableOpacityProps & {
 export function Percentage({title, type,...rest }: PercentageProps) {
   const navigation = useNavigation()
 
-  if(Number(title) <= 50) {
+  if(parseFloat(title) <= parseFloat('50,00')) {
     type="SECONDARY"
   } else {
     type="PRIMARY"
   }
-
-  console.log(title, type)
 
   function handleGoToStatistics() {
     navigation.navigate('statistics');

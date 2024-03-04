@@ -7,7 +7,7 @@ export function Home() {
     <Container>
       <Header isLogoVisible isAvatarVisible/>
       
-      <Percentage title={'90'} />
+      <Percentage title={'90,00'} />
     </Container>
   );
 }
