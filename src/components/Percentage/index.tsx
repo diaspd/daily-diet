@@ -3,7 +3,7 @@ import { ButtonIconTypeStyleProps, Container, Desciption, StatisticsIcon, Title 
 
 import { useNavigation } from "@react-navigation/native";
 
-type PercentageProps = TouchableOpacityProps & {
+export type PercentageProps = TouchableOpacityProps & {
   title: string
   type?: ButtonIconTypeStyleProps;
 }

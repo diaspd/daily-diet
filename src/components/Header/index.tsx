@@ -1,9 +1,11 @@
 import { useNavigation } from "@react-navigation/native";
 
-import { ButtonIconTypeStyleProps, Container, BackButton, BackIcon, Logo, AvatarContainer, Avatar } from "./styles";
+import { Container, BackButton, BackIcon, Logo, AvatarContainer, Avatar } from "./styles";
 
 import logoImg from '@assets/logo.png';
 import AvatarImg from '@assets/avatar.png';
+
+import { ButtonIconTypeStyleProps } from "@components/Percentage/styles";
 
 type BackButtonProps = {
   isBackButtonVisible?: boolean;

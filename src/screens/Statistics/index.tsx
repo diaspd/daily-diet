@@ -5,7 +5,7 @@ import { Percentage } from '@components/Percentage';
 export function Statistics() {
   return (
     <Container>
-      <Header isBackButtonVisible />
+      <Header isBackButtonVisible type='PRIMARY'/>
 
       <Percentage title={'90,00'} />
     </Container>
