@@ -30,8 +30,8 @@ export const AvatarContainer = styled.View`
   justify-items: center;
   align-items: center;
   
-  width: 55px;
-  height: 55px;
+  width: 45px;
+  height: 45px;
   border-color: ${() => useTheme().COLORS.GRAY_600};
   border: 3px;
   border-radius: 100px;
@@ -39,7 +39,7 @@ export const AvatarContainer = styled.View`
   object-fit: cover;
 `
 export const Avatar = styled.Image`
-  width: 49px;
-  height: 49px;
+  width: 40px;
+  height: 39px;
   border-radius: 100px;
 `
