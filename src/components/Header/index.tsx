@@ -26,7 +26,7 @@ export function Header({ type = 'PRIMARY', isBackButtonVisible = false, isLogoVi
         { isBackButtonVisible &&  
           (
             <BackButton onPress={handleGoBack}>
-             <BackIcon type={type} />
+             <BackIcon type={type} size={20}/>
             </BackButton>
           )
         }

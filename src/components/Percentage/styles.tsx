@@ -28,8 +28,9 @@ export const StatisticsIcon = styled(ArrowUpRight).attrs<ButtonIconStyleProps>((
   fontFamily: useTheme().FONT_FAMILY.BOLD,
 }))`
   margin-left: auto;
-  margin-right: -12px;
-  margin-top: -10px;
+  margin-right: -10px;
+  margin-top: 8px;
+  top: 14px;
 `
 
 export const Title = styled.Text`
@@ -37,8 +38,8 @@ export const Title = styled.Text`
     font-size: ${useTheme().FONT_SIZE.XXL}px;
     color: ${useTheme().COLORS.GRAY_700};
     font-family: ${useTheme().FONT_FAMILY.BOLD};
-    margin-top: -20px;
     margin-left: 10px;
+    text-align: center;
   `}
 `
 
@@ -46,4 +47,6 @@ export const Desciption = styled.Text(() => ({
   color: useTheme().COLORS.GRAY_700,
   fontSize: useTheme().FONT_SIZE.SM,
   fontWeight: useTheme().FONT_FAMILY.REGULAR,
+  paddingBottom: '35px',
+  textAlign: 'center',
 }))
