@@ -1,3 +1,4 @@
+import { DayList } from '@components/DayList';
 import { Container, Button, Title, Label } from './styles';
 
 import { Header } from '@components/Header';
@@ -28,6 +29,9 @@ export function Home() {
           Nova refeição
         </Title>
       </Button>
+
+      <DayList />
+      <DayList />
     </Container>
   );
 }
