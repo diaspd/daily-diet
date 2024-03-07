@@ -12,7 +12,6 @@ export const Container = styled.View`
 `
 
 export const BackButton = styled.TouchableOpacity`
-  flex: 1;
 `
 
 export const BackIcon = styled(ArrowLeft).attrs<ButtonIconStyleProps>(({type}: ButtonIconStyleProps) => ({

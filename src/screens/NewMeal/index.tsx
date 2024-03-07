@@ -1,10 +1,20 @@
 import { Header } from '@components/Header';
-import { Container } from './styles';
+import { Container, FormTitle, HeaderContent, StatisticsContainer } from './styles';
 
 export function NewMeal() {
   return (
     <Container>
-      <Header isBackButtonVisible type='TERTIARY'/>
+      <HeaderContent>
+        <Header isBackButtonVisible type='TERTIARY'/>
+
+        <FormTitle>
+          Nova refeição
+        </FormTitle>
+      </HeaderContent>
+    
+      <StatisticsContainer>
+        
+      </StatisticsContainer>
     </Container>
   );
 }
