@@ -29,3 +29,22 @@ export const StatisticsContainer = styled.View`
   padding: 0 24px;
   margin-top: 24px;
 `
+
+export const Label = styled.Text`
+  ${() => css`
+    font-size: ${useTheme().FONT_SIZE.LG}px;
+    color: ${useTheme().COLORS.GRAY_600};
+    font-family: ${useTheme().FONT_FAMILY.BOLD};
+    margin-top: 50px;
+  `}
+`
+
+export const DateTimeContainer = styled.View`
+  width: 100%;
+  flex-direction: row;
+  gap: 20px;
+`
+
+export const DateTimeContent = styled.View`
+ flex: 1;
+`
