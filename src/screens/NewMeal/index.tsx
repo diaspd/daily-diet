@@ -1,8 +1,11 @@
 import { Header } from '@components/Header';
-import { Container, Label, FormTitle, HeaderContent, StatisticsContainer, DateTimeContainer, DateTimeContent } from './styles';
+import { Container, Label, FormTitle, HeaderContent, StatisticsContainer, DateTimeContainer, DateTimeContent, Option, OptionText, Status } from './styles';
 import { Input } from '@components/Input';
+import { useTheme } from 'styled-components/native';
 
 export function NewMeal() {
+  const { COLORS } = useTheme()
+
   return (
     <Container>
       <HeaderContent>
@@ -32,7 +35,24 @@ export function NewMeal() {
           </DateTimeContent>
         </DateTimeContainer>
 
-        <Label>Está dentro da dieta</Label>
+        <Label>Está dentro da dieta?</Label>
+
+        <DateTimeContainer>
+          <Option>
+            <Status style={{backgroundColor: COLORS.GREEN_700}}/>
+            <OptionText>
+              Sim
+            </OptionText>
+          </Option>
+
+          <Option>
+            <Status style={{backgroundColor: COLORS.RED_700}}/>
+            <OptionText>
+              Não
+            </OptionText>
+          </Option>
+        </DateTimeContainer>
+
       </StatisticsContainer>
     </Container>
   );
