@@ -2,6 +2,7 @@ import { Header } from '@components/Header';
 import { Container, Label, FormTitle, HeaderContent, StatisticsContainer, DateTimeContainer, DateTimeContent, Option, OptionText, Status } from './styles';
 import { Input } from '@components/Input';
 import { useTheme } from 'styled-components/native';
+import { Button } from '@components/Button';
 
 export function NewMeal() {
   const { COLORS } = useTheme()
@@ -53,6 +54,7 @@ export function NewMeal() {
           </Option>
         </DateTimeContainer>
 
+        <Button title='Cadastrar refeição' style={{marginTop: 'auto', marginBottom: 24}}/>
       </StatisticsContainer>
     </Container>
   );
