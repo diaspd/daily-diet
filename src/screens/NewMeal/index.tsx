@@ -1,4 +1,4 @@
-import { Container, Label, FormTitle, HeaderContent, StatisticsContainer, DateTimeContainer, DateTimeContent, OptionContainer, Option, OptionText, Status } from './styles';
+import { Container, Label, FormTitle, HeaderContent, StatisticsContainer, DateTimeContainer, DateTimeContent, OptionContainer, Option, OptionText, Status, OptionContent } from './styles';
 
 import { Header } from '@components/Header';
 import { Input } from '@components/Input';
@@ -46,29 +46,31 @@ export function NewMeal() {
           </DateTimeContent>
         </DateTimeContainer>
 
+
+      <OptionContainer>
         <Label>Está dentro da dieta?</Label>
+          <OptionContent>
+            <Option>
+              <Status style={{backgroundColor: COLORS.GREEN_700}}/>
+              <OptionText>
+                Sim
+              </OptionText>
+            </Option>
 
-        <OptionContainer>
-          <Option>
-            <Status style={{backgroundColor: COLORS.GREEN_700}}/>
-            <OptionText>
-              Sim
-            </OptionText>
-          </Option>
+            <Option>
+              <Status style={{backgroundColor: COLORS.RED_700}}/>
+              <OptionText>
+                Não
+              </OptionText>
+            </Option>
+          </OptionContent>
 
-          <Option>
-            <Status style={{backgroundColor: COLORS.RED_700}}/>
-            <OptionText>
-              Não
-            </OptionText>
-          </Option>
+          <Button 
+            title='Cadastrar refeição' 
+            onPress={handleGoToFeedback}
+            style={{marginBottom: 24}}
+          />
         </OptionContainer>
-
-        <Button 
-          title='Cadastrar refeição' 
-          onPress={handleGoToFeedback}
-          style={{marginBottom: 24}}
-        />
       </StatisticsContainer>
     </Container>
   );

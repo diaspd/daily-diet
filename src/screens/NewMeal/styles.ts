@@ -41,11 +41,19 @@ export const Label = styled.Text`
 
 export const DateTimeContainer = styled.View`
   width: 100%;
+  height: fit-content;
   flex-direction: row;
   gap: 20px;
+  margin-bottom: 28px;
 `
 
 export const OptionContainer = styled.View`
+  width: 100%;
+  flex-direction: column;
+  flex: 1;
+`
+
+export const OptionContent = styled.View`
   width: 100%;
   flex-direction: row;
   gap: 20px;
