@@ -1,5 +1,6 @@
-import { Header } from '@components/Header';
 import { Container, HeaderContainer, StatisticsContainer, StatisticsTitle, StatisticsContent, Description, SuccessContainer, FailContainer, LastStatistics } from './styles';
+
+import { Header } from '@components/Header';
 import { Desciption, Title } from '@components/Percentage/styles';
 
 export function Statistics() {

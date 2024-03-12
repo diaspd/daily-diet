@@ -1,5 +1,6 @@
-import { Meal } from "@components/Meal";
 import { Container, Date } from "./styles";
+
+import { Meal } from "@components/Meal";
 
 export function DayList() {
     return (

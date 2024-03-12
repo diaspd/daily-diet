@@ -1,10 +1,22 @@
-import { Container, Label, FormTitle, HeaderContent, StatisticsContainer, DateTimeContainer, DateTimeContent, OptionContainer, Option, OptionText, Status, OptionContent } from './styles';
+import { 
+    Container, 
+    Label, 
+    FormTitle, 
+    HeaderContent, 
+    StatisticsContainer, 
+    DateTimeContainer, 
+    DateTimeContent, 
+    OptionContainer, 
+    Option, 
+    OptionText, 
+    Status, 
+    OptionContent 
+} from './styles';
 
 import { Header } from '@components/Header';
 import { Input } from '@components/Input';
 import { useTheme } from 'styled-components/native';
 import { Button } from '@components/Button';
-
 
 import { useNavigation } from "@react-navigation/native";
 

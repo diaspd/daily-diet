@@ -1,6 +1,6 @@
-import { DayList } from '@components/DayList';
 import { Container, Label } from './styles';
 
+import { DayList } from '@components/DayList';
 import { Header } from '@components/Header';
 import { Percentage } from '@components/Percentage';
 import { Button } from '@components/Button';

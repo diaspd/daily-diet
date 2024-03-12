@@ -1,4 +1,5 @@
 import { TouchableOpacityProps } from 'react-native';
+
 import { ButtonIconTypeStyleProps, Container, Desciption, StatisticsIcon, Title } from './styles';
 
 import { useNavigation } from "@react-navigation/native";
