@@ -45,6 +45,13 @@ export const DateTimeContainer = styled.View`
   gap: 20px;
 `
 
+export const OptionContainer = styled.View`
+  width: 100%;
+  flex-direction: row;
+  gap: 20px;
+  flex: 1;
+`
+
 export const DateTimeContent = styled.View`
  flex: 1;
 `

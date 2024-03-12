@@ -6,7 +6,6 @@ import { Percentage } from '@components/Percentage';
 import { Button } from '@components/Button';
 
 import { useNavigation } from "@react-navigation/native";
-import { Plus } from 'phosphor-react-native';
 
 export function Home() {
   const navigation = useNavigation()

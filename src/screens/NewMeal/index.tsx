@@ -1,11 +1,21 @@
+import { Container, Label, FormTitle, HeaderContent, StatisticsContainer, DateTimeContainer, DateTimeContent, OptionContainer, Option, OptionText, Status } from './styles';
+
 import { Header } from '@components/Header';
-import { Container, Label, FormTitle, HeaderContent, StatisticsContainer, DateTimeContainer, DateTimeContent, Option, OptionText, Status } from './styles';
 import { Input } from '@components/Input';
 import { useTheme } from 'styled-components/native';
 import { Button } from '@components/Button';
 
+
+import { useNavigation } from "@react-navigation/native";
+
 export function NewMeal() {
-  const { COLORS } = useTheme()
+  const { COLORS } = useTheme();
+
+  const navigation = useNavigation()
+
+  function handleGoToFeedback() {
+    navigation.navigate('feedback');
+  }
 
   return (
     <Container>
@@ -22,7 +32,7 @@ export function NewMeal() {
         <Input />
 
         <Label>Descrição</Label>
-        <Input style={{height: 90}} />
+        <Input />
 
         <DateTimeContainer>
           <DateTimeContent>
@@ -38,7 +48,7 @@ export function NewMeal() {
 
         <Label>Está dentro da dieta?</Label>
 
-        <DateTimeContainer>
+        <OptionContainer>
           <Option>
             <Status style={{backgroundColor: COLORS.GREEN_700}}/>
             <OptionText>
@@ -52,9 +62,13 @@ export function NewMeal() {
               Não
             </OptionText>
           </Option>
-        </DateTimeContainer>
+        </OptionContainer>
 
-        <Button title='Cadastrar refeição' style={{marginTop: 'auto', marginBottom: 24}}/>
+        <Button 
+          title='Cadastrar refeição' 
+          onPress={handleGoToFeedback}
+          style={{marginBottom: 24}}
+        />
       </StatisticsContainer>
     </Container>
   );
