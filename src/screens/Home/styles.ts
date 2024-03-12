@@ -16,24 +16,3 @@ export const Label = styled.Text`
     margin-top: 50px;
   `}
 `
-
-export const Button = styled(TouchableOpacity)`
-  flex-direction: row;
-  gap: 12px;
-  align-items: center;
-  justify-content: center;
-
-  padding: 16px 24px;
-  margin-top: 10px;
-
-  background-color: ${() => useTheme().COLORS.GRAY_600};
-  border-radius: 6px;
-`;
-
-export const Title = styled.Text`
-  ${() => css`
-    font-size: ${useTheme().FONT_SIZE.SM}px;
-    color: ${useTheme().COLORS.WHITE};
-    font-family: ${useTheme().FONT_FAMILY.BOLD};
-  `}
-`

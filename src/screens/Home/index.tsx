@@ -1,8 +1,9 @@
 import { DayList } from '@components/DayList';
-import { Container, Button, Title, Label } from './styles';
+import { Container, Label } from './styles';
 
 import { Header } from '@components/Header';
 import { Percentage } from '@components/Percentage';
+import { Button } from '@components/Button';
 
 import { useNavigation } from "@react-navigation/native";
 import { Plus } from 'phosphor-react-native';
@@ -23,12 +24,11 @@ export function Home() {
 
       <Label>Refeições</Label>
       
-      <Button onPress={handleGoToNewMeal}>
-        <Plus color="#FAFAFA" size={20}/>
-        <Title>
-          Nova refeição
-        </Title>
-      </Button>
+      <Button 
+        onPress={handleGoToNewMeal}
+        hasIcon
+        title='Nova refeição'
+      />
 
       <DayList />
       <DayList />
