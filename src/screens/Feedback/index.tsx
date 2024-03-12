@@ -20,7 +20,13 @@ export function Feedback() {
       <Title>Continue assim!</Title>
 
       <Description>
-        Você continua dentro da dieta. Muito bem!
+        Você continua  
+          {' '}
+          <Description style={{fontWeight: '700'}}>
+             dentro da dieta. 
+          </Description>
+          {' '}
+        Muito bem!
       </Description>
 
 
