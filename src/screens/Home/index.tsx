@@ -6,9 +6,12 @@ import { Percentage } from '@components/Percentage';
 import { Button } from '@components/Button';
 
 import { useNavigation } from "@react-navigation/native";
+import { Plus } from 'phosphor-react-native';
+import { useTheme } from 'styled-components';
 
 export function Home() {
   const navigation = useNavigation()
+  const { COLORS } = useTheme();
 
   function handleGoToNewMeal() {
     navigation.navigate('new');
@@ -25,7 +28,7 @@ export function Home() {
       
       <Button 
         onPress={handleGoToNewMeal}
-        hasIcon
+        icon={<Plus size={18} color={COLORS.WHITE} weight='bold'/>}
         title='Nova refeição'
       />
 

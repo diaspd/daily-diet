@@ -3,22 +3,22 @@ import { TouchableOpacityProps } from "react-native";
 import { Container, Title } from "./styles";
 import { Plus } from "phosphor-react-native";
 
-type ButtonProps = TouchableOpacityProps & {
+export type ButtonType = 'default' | 'secondary'
+
+export type ButtonProps = TouchableOpacityProps & {
   title: string;
-  hasIcon?: boolean;
+  icon?: JSX.Element;
+  variant?: ButtonType
 }
 
-export function Button({ title, hasIcon = false, ...rest}: ButtonProps) {
+export function Button({ title, icon, variant = "default",...rest }: ButtonProps) {
   return (
     <Container 
+      variant={variant}
       {...rest}
     >
-      { hasIcon &&  
-          (
-            <Plus color="#FAFAFA" size={20}/>
-          )
-        }
-      <Title>
+      {icon}
+      <Title variant={variant}>
         {title}
       </Title>
     </Container>
