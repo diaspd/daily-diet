@@ -31,5 +31,6 @@ export const Description = styled.Text`
     color: ${useTheme().COLORS.GRAY_700};
     font-family: ${useTheme().FONT_FAMILY.REGULAR};
     margin: 12px 0 40px 0;
-  `}
+    text-align: center;
+    `}
 `

@@ -14,23 +14,26 @@ export function Feedback() {
     navigation.navigate('home');
   }
 
+  const isOnDiet = 40
+
   return (
-    <Container>
-        
-      <Title>Continue assim!</Title>
+    <Container>   
+      {isOnDiet >= 50 ? (
+        <Title> Continue assim!</Title>) : (
+        <Title style={{color: '#BF3B44'}}>Que pena!</Title>
+      )}
 
       <Description>
-        Você continua  
-          {' '}
-          <Description style={{fontWeight: '700'}}>
-             dentro da dieta. 
-          </Description>
-          {' '}
-        Muito bem!
+        {isOnDiet >= 50 ? 'Você continua' : 'Você'}
+        {' '}
+        <Description style={{fontWeight: '700'}}>
+          {isOnDiet >= 50 ? 'dentro da dieta. ' : 'saiu da dieta '}
+        </Description>
+          {isOnDiet >= 50 ? 'Muito bem!' : 'dessa vez, mas continue se esforçando e não desista!'}
       </Description>
 
 
-      <Illustration source={SuccessImg}/>
+      <Illustration source={isOnDiet >= 50 ? SuccessImg : FailImg }/>
 
       <Button 
         onPress={handleGoHome}
