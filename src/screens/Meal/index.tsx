@@ -23,6 +23,10 @@ const { COLORS } = useTheme();
 
 const navigation = useNavigation()
 
+function handleGoToEditMeal() {
+  navigation.navigate('edit')
+}
+
 return (
   <Container>
     <HeaderContent>
@@ -58,6 +62,7 @@ return (
           title='Editar refeição' 
           icon={<PencilLine size={24} color={COLORS.GRAY_100}/>}
           style={{ marginTop: 'auto' }}
+          onPress={handleGoToEditMeal}
         />
 
         <Button 
