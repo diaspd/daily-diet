@@ -31,7 +31,7 @@ export const StatisticsIcon = styled(ArrowUpRight).attrs<ButtonIconStyleProps>((
   margin-right: -10px;
   margin-top: 8px;
   top: 14px;
-`
+`;
 
 export const Title = styled.Text`
   ${() => css`

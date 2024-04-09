@@ -1,6 +1,6 @@
 import styled, { css, useTheme } from "styled-components/native";
 
-export const Container = styled.View`
+export const Container = styled.Pressable`
   width: 100%;
 
   align-items: center;

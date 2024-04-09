@@ -1,9 +1,8 @@
 import { TouchableOpacityProps } from "react-native";
 
 import { Container, Title } from "./styles";
-import { Plus } from "phosphor-react-native";
 
-export type ButtonType = 'default' | 'secondary'
+export type ButtonType = 'DEFAULT' | 'SECONDARY'
 
 export type ButtonProps = TouchableOpacityProps & {
   title: string;
@@ -11,7 +10,7 @@ export type ButtonProps = TouchableOpacityProps & {
   variant?: ButtonType
 }
 
-export function Button({ title, icon, variant = "default",...rest }: ButtonProps) {
+export function Button({ title, icon, variant = "DEFAULT",...rest }: ButtonProps) {
   return (
     <Container 
       variant={variant}

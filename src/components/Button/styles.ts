@@ -1,7 +1,7 @@
 import {  TouchableOpacity } from "react-native";
 
 import styled, { useTheme, css } from 'styled-components/native';
-import { ButtonType } from ".";
+import { ButtonType } from "./index";
 
 type ButtonStyleProps = {
   variant: ButtonType;
@@ -9,11 +9,11 @@ type ButtonStyleProps = {
 
 export const Container = styled(TouchableOpacity)<ButtonStyleProps>`
   ${({ variant }: ButtonStyleProps) => css`
-    background-color: ${variant === 'default'
+    background-color: ${variant === 'DEFAULT'
       ? useTheme().COLORS['GRAY_700']
       : 'transparent'};
     border: 1px solid
-      ${variant === 'default' ? 'transparent' : useTheme().COLORS.GRAY_700};
+      ${variant === 'DEFAULT' ? 'transparent' : useTheme().COLORS.GRAY_700};
   `}
   flex-direction: row;
   gap: 12px;
@@ -28,7 +28,7 @@ export const Container = styled(TouchableOpacity)<ButtonStyleProps>`
 
 export const Title = styled.Text<ButtonStyleProps>`
   ${({ variant }) => css`
-    color: ${variant === 'default'
+    color: ${variant === 'DEFAULT'
       ? useTheme().COLORS.WHITE
       : useTheme().COLORS.GRAY_700
     };

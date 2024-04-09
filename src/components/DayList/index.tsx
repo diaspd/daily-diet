@@ -1,6 +1,6 @@
 import { Container, Date } from "./styles";
 
-import { Meal } from "@components/Meal";
+import { MealComponent } from "@components/MealComponent";
 
 export function DayList() {
     return (
@@ -9,10 +9,10 @@ export function DayList() {
           12.03.24
         </Date>
 
-        <Meal /> 
-        <Meal /> 
-        <Meal /> 
-        <Meal /> 
+        <MealComponent /> 
+        <MealComponent /> 
+        <MealComponent /> 
+        <MealComponent /> 
       </Container>
     )
 }

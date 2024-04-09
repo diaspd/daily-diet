@@ -1,8 +1,16 @@
 import { Container, HourText, InfoContainer, MealText, Status, Separator } from "./styles";
 
-export function Meal() {
+import { useNavigation } from "@react-navigation/native";
+
+export function MealComponent() {
+    const navigation = useNavigation()
+
+    function handleGoToMeal() {
+      navigation.navigate('meal');
+    }
+
     return (
-      <Container>
+      <Container onPress={handleGoToMeal}>
         <HourText>
           20:00
         </HourText>

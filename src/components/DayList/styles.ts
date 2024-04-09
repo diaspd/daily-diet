@@ -13,6 +13,6 @@ export const Date = styled.Text`
     font-size: ${useTheme().FONT_SIZE.LG}px;
     color: ${useTheme().COLORS.GRAY_700};
     font-family: ${useTheme().FONT_FAMILY.BOLD};
-    text-align: start;
+    text-align: left;
   `}
 `

@@ -3,7 +3,7 @@ import { Container, BackButton, BackIcon, Logo, AvatarContainer, Avatar } from "
 import { ButtonIconTypeStyleProps } from "@components/Percentage/styles";
 
 import logoImg from '@assets/logo.png';
-import AvatarImg from '@assets/avatar.png';
+import AvatarImg from '@assets/icons/avatar.png';
 
 import { useNavigation } from "@react-navigation/native";
 
@@ -18,7 +18,7 @@ export function Header({ type = 'PRIMARY', isBackButtonVisible = false, isLogoVi
     const navigation = useNavigation()
 
     function handleGoBack() {
-      navigation.navigate('home');
+      navigation.goBack();
     }
   
     return (

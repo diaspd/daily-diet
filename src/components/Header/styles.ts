@@ -9,16 +9,16 @@ export const Container = styled.View`
 
   justify-content: space-between;
   align-items: center;
-`
+`;
 
 export const BackButton = styled.TouchableOpacity`
-`
+`;
 
 export const BackIcon = styled(ArrowLeft).attrs<ButtonIconStyleProps>(({type}: ButtonIconStyleProps) => ({
   size: 36,
   color: type === 'PRIMARY' ? useTheme().COLORS.GREEN_700 : type === 'SECONDARY' ? useTheme().COLORS.RED_700 : type === 'TERTIARY' ? useTheme().COLORS.GRAY_700 : undefined
 }))`
-`
+`;
 
 export const Logo = styled.Image`
   width: 82px;
