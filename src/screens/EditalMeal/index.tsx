@@ -7,22 +7,17 @@ import {
   DateTimeContainer, 
   DateTimeContent, 
   OptionContainer, 
-  Option, 
-  OptionText, 
-  Status, 
   OptionContent 
 } from './styles';
 
 import { Header } from '@components/Header';
 import { Input } from '@components/Input';
-import { useTheme } from 'styled-components/native';
 import { Button } from '@components/Button';
 
 import { useNavigation } from "@react-navigation/native";
+import { SelectButton } from '@components/SelectButton';
 
 export function EditMeal() {
-const { COLORS } = useTheme();
-
 const navigation = useNavigation()
 
 function handleGoToFeedback() {
@@ -62,19 +57,8 @@ return (
     <OptionContainer>
       <Label>Está dentro da dieta?</Label>
         <OptionContent>
-          <Option>
-            <Status style={{backgroundColor: COLORS.GREEN_700}}/>
-            <OptionText>
-              Sim
-            </OptionText>
-          </Option>
-
-          <Option>
-            <Status style={{backgroundColor: COLORS.RED_700}}/>
-            <OptionText>
-              Não
-            </OptionText>
-          </Option>
+          <SelectButton title='Sim' type='PRIMARY'/>
+          <SelectButton title='Não' type='SECONDARY'/>
         </OptionContent>
 
         <Button 
