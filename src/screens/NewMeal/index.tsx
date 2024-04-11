@@ -14,20 +14,30 @@ import {
 
 import { Header } from '@components/Header';
 import { Input } from '@components/Input';
-import { useTheme } from 'styled-components/native';
 import { Button } from '@components/Button';
 
 import { useNavigation } from "@react-navigation/native";
 import { SelectButton } from '@components/SelectButton';
-import { KeyboardAvoidingView } from 'react-native';
+import { Alert } from 'react-native';
+import { useState } from 'react';
 
 export function NewMeal() {
-  const { COLORS } = useTheme();
-
   const navigation = useNavigation()
+  const [name, setName] = useState('')
 
-  function handleGoToFeedback() {
-    navigation.navigate('feedback');
+  async function handleCreateNewMeal() {
+    try {
+      if(name.trim().length === 0) {
+        return Alert.alert('Nova Refeição', 'Informe o nome da refeição.');
+      }
+      console.log(name)
+
+      // await mealCreate(name);
+      navigation.navigate('feedback');
+    } catch (error) {
+        Alert.alert('Nova Refeição', 'Não foi possível criar uma nova refeição.');
+        console.log(error);
+    }
   }
 
   return (
@@ -42,8 +52,8 @@ export function NewMeal() {
     
       <StatisticsContainer>
         <NameContainer>
-          <Label >Nome</Label>
-          <Input />
+          <Label>Nome</Label>
+          <Input onChangeText={setName}/>
         </NameContainer>
 
         <Label>Descrição</Label>
@@ -78,8 +88,9 @@ export function NewMeal() {
 
           <Button 
             title='Cadastrar refeição' 
-            onPress={handleGoToFeedback}
+            onPress={handleCreateNewMeal}
             style={{marginBottom: 28}}
+
           />
         </OptionContainer>
       </StatisticsContainer>
