@@ -7,7 +7,9 @@ import {
     DateTimeContainer, 
     DateTimeContent, 
     OptionContainer, 
-    OptionContent 
+    OptionContent, 
+    DescriptionContainer,
+    NameContainer
 } from './styles';
 
 import { Header } from '@components/Header';
@@ -17,6 +19,7 @@ import { Button } from '@components/Button';
 
 import { useNavigation } from "@react-navigation/native";
 import { SelectButton } from '@components/SelectButton';
+import { KeyboardAvoidingView } from 'react-native';
 
 export function NewMeal() {
   const { COLORS } = useTheme();
@@ -38,11 +41,19 @@ export function NewMeal() {
       </HeaderContent>
     
       <StatisticsContainer>
-        <Label>Nome</Label>
-        <Input />
+        <NameContainer>
+          <Label >Nome</Label>
+          <Input />
+        </NameContainer>
 
         <Label>Descrição</Label>
-        <Input />
+        <DescriptionContainer>
+          <Input    
+            multiline={true}
+            textAlignVertical={'top'}
+            maxLength={220}
+          />
+        </DescriptionContainer>
 
         <DateTimeContainer>
           <DateTimeContent>
@@ -68,7 +79,7 @@ export function NewMeal() {
           <Button 
             title='Cadastrar refeição' 
             onPress={handleGoToFeedback}
-            style={{marginBottom: 24}}
+            style={{marginBottom: 28}}
           />
         </OptionContainer>
       </StatisticsContainer>

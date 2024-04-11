@@ -16,6 +16,7 @@ import { Button } from '@components/Button';
 
 import { useNavigation } from "@react-navigation/native";
 import { SelectButton } from '@components/SelectButton';
+import { DescriptionContainer, NameContainer } from '@screens/NewMeal/styles';
 
 export function EditMeal() {
 const navigation = useNavigation()
@@ -35,11 +36,20 @@ return (
     </HeaderContent>
   
     <StatisticsContainer>
-      <Label>Nome</Label>
-      <Input />
+        <NameContainer>
+          <Label >Nome</Label>
+          <Input />
+        </NameContainer>
 
-      <Label>Descrição</Label>
-      <Input />
+        <Label>Descrição</Label>
+        <DescriptionContainer>
+          <Input    
+            multiline={true}
+            textAlignVertical={'top'}
+            maxLength={220}
+          />
+        </DescriptionContainer>
+
 
       <DateTimeContainer>
         <DateTimeContent>
@@ -64,7 +74,7 @@ return (
         <Button 
           title='Salvar alterações' 
           onPress={handleGoToFeedback}
-          style={{marginBottom: 24}}
+          style={{marginBottom: 28}}
         />
       </OptionContainer>
     </StatisticsContainer>

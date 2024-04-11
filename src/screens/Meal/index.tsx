@@ -69,7 +69,7 @@ return (
           title='Excluir refeição' 
           icon={<Trash />}
           variant='SECONDARY'
-          style={{marginBottom: 24}}
+          style={{marginBottom: 28}}
         />
     </MealContainer>
   </Container>

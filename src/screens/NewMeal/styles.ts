@@ -35,7 +35,7 @@ export const Label = styled.Text`
     font-size: ${useTheme().FONT_SIZE.LG}px;
     color: ${useTheme().COLORS.GRAY_600};
     font-family: ${useTheme().FONT_FAMILY.BOLD};
-    margin-top: 50px;
+    margin-top: 30px;
   `}
 `
 
@@ -49,7 +49,6 @@ export const DateTimeContainer = styled.View`
 
 export const OptionContainer = styled.View`
   width: 100%;
-  flex-direction: column;
   flex: 1;
 `
 
@@ -62,4 +61,12 @@ export const OptionContent = styled.View`
 
 export const DateTimeContent = styled.View`
  flex: 1;
+`
+
+export const DescriptionContainer = styled.View`
+  height: 130px;
+`
+
+export const NameContainer = styled.View`
+ height: 100px;
 `
