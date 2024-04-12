@@ -20,6 +20,7 @@ import { useNavigation } from "@react-navigation/native";
 import { SelectButton } from '@components/SelectButton';
 import { Alert } from 'react-native';
 import { useState } from 'react';
+import { mealCreate } from '@storage/meal/mealCreate';
 
 export function NewMeal() {
   const navigation = useNavigation()
@@ -30,9 +31,8 @@ export function NewMeal() {
       if(name.trim().length === 0) {
         return Alert.alert('Nova Refeição', 'Informe o nome da refeição.');
       }
-      console.log(name)
 
-      // await mealCreate(name);
+      await mealCreate(name);
       navigation.navigate('feedback');
     } catch (error) {
         Alert.alert('Nova Refeição', 'Não foi possível criar uma nova refeição.');
@@ -90,7 +90,6 @@ export function NewMeal() {
             title='Cadastrar refeição' 
             onPress={handleCreateNewMeal}
             style={{marginBottom: 28}}
-
           />
         </OptionContainer>
       </StatisticsContainer>

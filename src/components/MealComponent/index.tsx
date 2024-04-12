@@ -2,7 +2,7 @@ import { Container, HourText, InfoContainer, MealText, Status, Separator } from 
 
 import { useNavigation } from "@react-navigation/native";
 
-export function MealComponent() {
+export function MealComponent(meal: any) {
     const navigation = useNavigation()
 
     function handleGoToMeal() {
@@ -19,7 +19,7 @@ export function MealComponent() {
 
         <InfoContainer>
           <MealText>
-            X-Tudo
+            {JSON.stringify(meal)}
           </MealText>
 
           <Status />
