@@ -1,19 +1,37 @@
-import { Container, DayListContainer, Label, Date } from './styles';
+import { useCallback, useState } from 'react';
+
+import { Plus } from 'phosphor-react-native';
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
+
+import { Container, Label} from './styles';
 
 import { Header } from '@components/Header';
 import { Percentage } from '@components/Percentage';
 import { Button } from '@components/Button';
 
-import { useNavigation, useFocusEffect } from "@react-navigation/native";
-import { Plus } from 'phosphor-react-native';
 import { useTheme } from 'styled-components';
-import { Alert } from 'react-native';
-import { mealsGetAll } from '@storage/meal/mealsGetAll';
-import { useCallback, useState } from 'react';
+import { Alert, SectionList } from 'react-native';
 import { MealComponent } from '@components/MealComponent';
+import { MEAL_COLLECTION } from '@storage/storageConfig';
+import { EmptyList } from '@components/EmptyList';
+import { formattedDate } from '@utils/formattedDate';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+export type Meal = {
+  id: string;
+  title: string;
+  date: number;
+  description: string;
+};
+
+export interface MealProps {
+  title: string;
+  data: Meal[];
+}
 
 export function Home() {
-  const [meals, setMeals] = useState<string[]>([]);
+  const [meal, setMeal] = useState<MealProps[]>([]);
   const navigation = useNavigation()
   const { COLORS } = useTheme();
 
@@ -21,19 +39,28 @@ export function Home() {
     navigation.navigate('new');
   }
 
-  async function fetchMeals() {
-    try {
-      const data = await mealsGetAll();
-      setMeals(data);      
-    } catch (error) {
-       console.log(error);
-       Alert.alert('Turmas', 'Não foi possível carregar as turmas.');
-    } 
-  }
+  // AsyncStorage.clear();
 
-  useFocusEffect(useCallback(() => {
-    fetchMeals();
-  },[]));
+  // function handleGoToMeal(meal: Meal) {
+  //   navigation.navigate('meal', { meal });
+  // }
+
+  useFocusEffect(
+    useCallback(() => {
+      async function fetchMeals() {
+        try {
+          const storageData = await AsyncStorage.getItem(MEAL_COLLECTION);
+          const parsedData = storageData ? JSON.parse(storageData) : [];
+
+          setMeal(parsedData);
+        } catch (error) {
+            console.log(error);
+            Alert.alert('Dados', 'Não foi possível recuperar os dados.');
+          }
+      }
+      fetchMeals();
+    }, [])
+  );
 
   return (
     <Container>
@@ -50,15 +77,22 @@ export function Home() {
         title='Nova refeição'
       />
 
-      <DayListContainer>
-        <Date>
-          12.01.24
-        </Date>
-
-        {meals.map((meal) => {
-          return <MealComponent key={meal} title={meal} /> 
-        })}
-      </DayListContainer>
+      <SectionList
+        sections={meal}
+        keyExtractor={(meal, index) => meal.title + index}
+        renderItem={({ item: meal }) => (
+          <MealComponent
+            title={meal.title}
+            time={formattedDate(meal.date, 'time')}
+            // onPress={() => handleGoToMeal(meal)}
+          />
+        )}
+        ListEmptyComponent={
+          <EmptyList />
+        }
+        showsVerticalScrollIndicator={false}
+      />
+      
     </Container>
   );
 }

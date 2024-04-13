@@ -1,8 +1,14 @@
+import { TouchableOpacityProps } from "react-native";
 import { Container, HourText, InfoContainer, MealText, Status, Separator } from "./styles";
 
 import { useNavigation } from "@react-navigation/native";
 
-export function MealComponent(meal: any) {
+type MealComponentProps = TouchableOpacityProps & {
+  title: string;
+  time: string;
+};
+
+export function MealComponent({ title, time }: MealComponentProps) {
     const navigation = useNavigation()
 
     function handleGoToMeal() {
@@ -12,14 +18,14 @@ export function MealComponent(meal: any) {
     return (
       <Container onPress={handleGoToMeal}>
         <HourText>
-          20:00
+          {time}
         </HourText>
 
         <Separator />
 
         <InfoContainer>
           <MealText>
-            {JSON.stringify(meal)}
+            {title}
           </MealText>
 
           <Status />

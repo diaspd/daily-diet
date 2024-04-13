@@ -19,25 +19,37 @@ import { Button } from '@components/Button';
 import { useNavigation } from "@react-navigation/native";
 import { SelectButton } from '@components/SelectButton';
 import { Alert } from 'react-native';
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { mealCreate } from '@storage/meal/mealCreate';
 
 export function NewMeal() {
   const navigation = useNavigation()
-  const [name, setName] = useState('')
+  const [mealName, setMealName] = useState('');
+  const [mealDescription, setMealDescription] = useState('');
+
+  const mealId = useId();
 
   async function handleCreateNewMeal() {
+    if (mealName.trim().length === 0 || mealDescription.trim().length === 0) {
+      return Alert.alert('Nova Refeição', 'Preencha o nome e a descrição.');
+    }
+
+    const newMeal = {
+      id: mealId,
+      title: mealName,
+      description: mealDescription,
+      date: new Date().getTime(),
+    };
+
     try {
-      if(name.trim().length === 0) {
-        return Alert.alert('Nova Refeição', 'Informe o nome da refeição.');
+      await mealCreate(newMeal);
+      navigation.navigate('home');
+    } catch (error) {
+        console.log(error);
+        Alert.alert('Criar refeição', 'Não foi possível criar a refeição.');
       }
 
-      await mealCreate(name);
-      navigation.navigate('feedback');
-    } catch (error) {
-        Alert.alert('Nova Refeição', 'Não foi possível criar uma nova refeição.');
-        console.log(error);
-    }
+    navigation.navigate('feedback');
   }
 
   return (
@@ -53,7 +65,10 @@ export function NewMeal() {
       <StatisticsContainer>
         <NameContainer>
           <Label>Nome</Label>
-          <Input onChangeText={setName}/>
+          <Input 
+            onChangeText={setMealName}
+            value={mealName}
+           />
         </NameContainer>
 
         <Label>Descrição</Label>
@@ -62,6 +77,8 @@ export function NewMeal() {
             multiline={true}
             textAlignVertical={'top'}
             maxLength={220}
+            onChangeText={setMealDescription}
+            value={mealDescription}
           />
         </DescriptionContainer>
 
