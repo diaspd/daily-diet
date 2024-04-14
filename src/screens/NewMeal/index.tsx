@@ -21,11 +21,13 @@ import { SelectButton } from '@components/SelectButton';
 import { Alert } from 'react-native';
 import { useId, useState } from 'react';
 import { mealCreate } from '@storage/meal/mealCreate';
+import { formatDate } from '@utils/formatDate';
 
 export function NewMeal() {
   const navigation = useNavigation()
   const [mealName, setMealName] = useState('');
   const [mealDescription, setMealDescription] = useState('');
+  const [date, setDate] = useState<number>(new Date().getTime());
 
   const mealId = useId();
 
@@ -38,7 +40,7 @@ export function NewMeal() {
       id: mealId,
       title: mealName,
       description: mealDescription,
-      date: new Date().getTime(),
+      date: date,
     };
 
     try {
@@ -85,12 +87,12 @@ export function NewMeal() {
         <DateTimeContainer>
           <DateTimeContent>
             <Label>Data</Label>
-            <Input />
+            <Input defaultValue={formatDate(date, 'date')}/>
           </DateTimeContent>
 
           <DateTimeContent>
             <Label>Hora</Label>
-            <Input />
+            <Input defaultValue={formatDate(date, 'time')}/>
           </DateTimeContent>
         </DateTimeContainer>
 

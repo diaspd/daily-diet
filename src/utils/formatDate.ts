@@ -1,4 +1,4 @@
-export function formattedDate(dateInMiliseconds: number, type: 'date' | 'time') {
+export function formatDate(dateInMiliseconds: number, type: 'date' | 'time') {
   switch (type) {
     case 'date':
       const unformattedDate = new Date(dateInMiliseconds);
@@ -11,7 +11,7 @@ export function formattedDate(dateInMiliseconds: number, type: 'date' | 'time') 
       return formattedDate;
 
     case 'time':
-      return new Date(dateInMiliseconds).toLocaleTimeString().substring(0, 5);
+      return new Date(dateInMiliseconds).toLocaleTimeString('pt-BR').substring(0, 5);
     default:
       return new Date().toLocaleDateString();
   }

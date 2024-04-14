@@ -3,7 +3,7 @@ import { useCallback, useState } from 'react';
 import { Plus } from 'phosphor-react-native';
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
 
-import { Container, Label} from './styles';
+import { Container, DateTitle, Label} from './styles';
 
 import { Header } from '@components/Header';
 import { Percentage } from '@components/Percentage';
@@ -14,7 +14,7 @@ import { Alert, SectionList } from 'react-native';
 import { MealComponent } from '@components/MealComponent';
 import { MEAL_COLLECTION } from '@storage/storageConfig';
 import { EmptyList } from '@components/EmptyList';
-import { formattedDate } from '@utils/formattedDate';
+import { formatDate } from '@utils/formatDate';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -68,7 +68,6 @@ export function Home() {
       
       <Percentage title={'90,00'} />
 
-
       <Label>Refeições</Label>
       
       <Button 
@@ -83,9 +82,12 @@ export function Home() {
         renderItem={({ item: meal }) => (
           <MealComponent
             title={meal.title}
-            time={formattedDate(meal.date, 'time')}
+            time={formatDate(meal.date, 'time')}
             // onPress={() => handleGoToMeal(meal)}
           />
+        )}
+        renderSectionHeader={({ section: { title } }) => (
+          <DateTitle>{title.replace(/\//g, ".")}</DateTitle>
         )}
         ListEmptyComponent={
           <EmptyList />

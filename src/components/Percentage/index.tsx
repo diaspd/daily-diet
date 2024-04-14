@@ -30,9 +30,9 @@ export function Percentage({title, type,...rest }: PercentageProps) {
         {title}%
       </Title>
 
-      {/* <Desciption>
+      <Desciption>
         das refeições dentro da dieta
-      </Desciption> */}
+      </Desciption>
     </Container>
   );
 }
