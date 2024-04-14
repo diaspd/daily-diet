@@ -89,6 +89,7 @@ export function Home() {
         renderSectionHeader={({ section: { title } }) => (
           <DateTitle>{title.replace(/\//g, ".")}</DateTitle>
         )}
+        fadingEdgeLength={200}
         ListEmptyComponent={
           <EmptyList />
         }
