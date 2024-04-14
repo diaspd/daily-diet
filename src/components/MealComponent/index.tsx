@@ -6,9 +6,10 @@ import { useNavigation } from "@react-navigation/native";
 type MealComponentProps = TouchableOpacityProps & {
   title: string;
   time: string;
+  status: boolean;
 };
 
-export function MealComponent({ title, time }: MealComponentProps) {
+export function MealComponent({ title, time, status}: MealComponentProps) {
     const navigation = useNavigation()
 
     function handleGoToMeal() {
@@ -28,7 +29,7 @@ export function MealComponent({ title, time }: MealComponentProps) {
             {title}
           </MealText>
 
-          <Status />
+          <Status status={status} />
         </InfoContainer>
       </Container>  
     )

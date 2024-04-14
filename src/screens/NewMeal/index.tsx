@@ -29,6 +29,7 @@ export function NewMeal() {
   const navigation = useNavigation()
   const [mealName, setMealName] = useState('');
   const [mealDescription, setMealDescription] = useState('');
+  const [mealOnDiet, setMealOnDiet] = useState(false);
   const [date, setDate] = useState<number>(new Date().getTime());
 
   const mealId = useId();
@@ -58,6 +59,7 @@ export function NewMeal() {
       title: mealName,
       description: mealDescription,
       date: date,
+      isOnDiet: mealOnDiet === true ? true : false,
     };
 
     try {
@@ -123,9 +125,17 @@ export function NewMeal() {
       <OptionContainer>
         <Label>Está dentro da dieta?</Label>
           <OptionContent>
-            <SelectButton title='Sim' type='PRIMARY'/>
+            <SelectButton 
+              title='Sim' 
+              type='PRIMARY'
+              onPress={() => setMealOnDiet(true)}
+            />
 
-            <SelectButton title='Não' type='SECONDARY'/>
+            <SelectButton 
+              title='Não' 
+              type='SECONDARY'
+              onPress={() => setMealOnDiet(false)}
+            />
           </OptionContent>
 
           <Button 

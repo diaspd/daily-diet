@@ -23,6 +23,7 @@ export type Meal = {
   title: string;
   date: number;
   description: string;
+  isOnDiet: boolean;
 };
 
 export interface MealProps {
@@ -84,6 +85,7 @@ export function Home() {
           <MealComponent
             title={meal.title}
             time={formatDate(meal.date, 'time')}
+            status={meal.isOnDiet ? true : false}
             // onPress={() => handleGoToMeal(meal)}
           />
         )}

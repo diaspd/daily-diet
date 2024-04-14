@@ -1,5 +1,9 @@
 import styled, { css, useTheme } from "styled-components/native";
 
+type StatusStyleProps = {
+  status: boolean;
+};
+
 export const Container = styled.Pressable`
   width: 100%;
 
@@ -42,10 +46,11 @@ export const MealText = styled.Text`
   `}
 `
 
-export const Status = styled.View`
+export const Status = styled.View<StatusStyleProps>`
   align-self: center;
   border-radius: 99999px;
-  background-color: ${() => useTheme().COLORS.RED_500};
   width: 14px;
   height: 14px;
+  background-color: ${({ theme, status }) =>
+    status === true ? theme.COLORS.GREEN_500 : theme.COLORS.RED_500};
 `
