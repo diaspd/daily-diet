@@ -1,14 +1,17 @@
 import { ForkKnife } from 'phosphor-react-native';
-import { useTheme } from 'styled-components/native';
-import { Container, Message } from './styles';
+import { Container, MessageBody, MessageTitle } from './styles';
 
 export function EmptyList() {
   return (
     <Container>
       <ForkKnife size={55} />
-      <Message>
-        Sua lista está vazia!{'\n'} Que tal adicionar uma refeição?
-      </Message>
+      <MessageTitle>
+        Sua lista está vazia!
+      </MessageTitle>
+
+      <MessageBody>
+        Que tal adicionar uma refeição?
+      </MessageBody>
     </Container>
   );
 }
