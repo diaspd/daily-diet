@@ -23,6 +23,8 @@ import { useId, useState } from 'react';
 import { mealCreate } from '@storage/meal/mealCreate';
 import { formatDate } from '@utils/formatDate';
 
+import { DateTimePickerAndroid, DateTimePickerEvent } from '@react-native-community/datetimepicker';
+
 export function NewMeal() {
   const navigation = useNavigation()
   const [mealName, setMealName] = useState('');
@@ -30,6 +32,21 @@ export function NewMeal() {
   const [date, setDate] = useState<number>(new Date().getTime());
 
   const mealId = useId();
+  
+  function onChange(evt: DateTimePickerEvent, selectedDate?: Date) {
+    const formatedDate = selectedDate!.getTime();
+    setDate(formatedDate);
+  }
+
+  function showDateOrTimePicker(mode: 'date' | 'time') {
+    DateTimePickerAndroid.open({
+      value: new Date(date),
+      onChange,
+      mode,
+      is24Hour: true,
+      display: "spinner",
+    });
+  }
 
   async function handleCreateNewMeal() {
     if (mealName.trim().length === 0 || mealDescription.trim().length === 0) {
@@ -87,12 +104,18 @@ export function NewMeal() {
         <DateTimeContainer>
           <DateTimeContent>
             <Label>Data</Label>
-            <Input defaultValue={formatDate(date, 'date')}/>
+            <Input  
+              defaultValue={formatDate(date, 'date')}
+              onPressIn={() => showDateOrTimePicker('date')}
+            />
           </DateTimeContent>
 
           <DateTimeContent>
             <Label>Hora</Label>
-            <Input defaultValue={formatDate(date, 'time')}/>
+            <Input 
+              onPressIn={() => showDateOrTimePicker('time')}
+              defaultValue={formatDate(date, 'time')}
+            />
           </DateTimeContent>
         </DateTimeContainer>
 

@@ -52,7 +52,8 @@ export function Home() {
           const storageData = await AsyncStorage.getItem(MEAL_COLLECTION);
           const parsedData = storageData ? JSON.parse(storageData) : [];
 
-          setMeal(parsedData);
+          const formattedData = parsedData.reverse()
+          setMeal(formattedData);
         } catch (error) {
             console.log(error);
             Alert.alert('Dados', 'Não foi possível recuperar os dados.');
