@@ -5,35 +5,39 @@ import FailImg from '@assets/icons/fail.png';
 
 import { Button } from '@components/Button';
 
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+
+type RouteParams = {
+  isOnDiet: boolean;
+}
 
 export function Feedback() {
   const navigation = useNavigation()
+  const route = useRoute()
 
   function handleGoHome() {
     navigation.navigate('home');
   }
-
-  const isOnDiet = 40
+  const { isOnDiet } = route.params as RouteParams;
 
   return (
     <Container>   
-      {isOnDiet >= 50 ? (
+      {isOnDiet === true ? (
         <Title> Continue assim!</Title>) : (
         <Title style={{color: '#BF3B44'}}>Que pena!</Title>
       )}
 
       <Description>
-        {isOnDiet >= 50 ? 'Você continua' : 'Você'}
+        {isOnDiet === true ? 'Você continua' : 'Você'}
         {' '}
         <Description style={{fontWeight: '700'}}>
-          {isOnDiet >= 50 ? 'dentro da dieta. ' : 'saiu da dieta '}
+          {isOnDiet === true ? 'dentro da dieta. ' : 'saiu da dieta '}
         </Description>
-          {isOnDiet >= 50 ? 'Muito bem!' : 'dessa vez, mas continue se esforçando e não desista!'}
+          {isOnDiet === true ? 'Muito bem!' : 'dessa vez, mas continue se esforçando e não desista!'}
       </Description>
 
 
-      <Illustration source={isOnDiet >= 50 ? SuccessImg : FailImg }/>
+      <Illustration source={isOnDiet === true ? SuccessImg : FailImg }/>
 
       <Button 
         onPress={handleGoHome}

@@ -70,7 +70,9 @@ export function NewMeal() {
         Alert.alert('Criar refeição', 'Não foi possível criar a refeição.');
       }
 
-    navigation.navigate('feedback');
+    navigation.navigate('feedback', {
+      isOnDiet: mealOnDiet ? true : false,
+    });
   }
 
   return (
