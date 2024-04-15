@@ -1,23 +1,15 @@
 import { TouchableOpacityProps } from "react-native";
 import { Container, HourText, InfoContainer, MealText, Status, Separator } from "./styles";
 
-import { useNavigation } from "@react-navigation/native";
-
 type MealComponentProps = TouchableOpacityProps & {
   title: string;
   time: string;
   status: boolean;
 };
 
-export function MealComponent({ title, time, status}: MealComponentProps) {
-    const navigation = useNavigation()
-
-    function handleGoToMeal() {
-      navigation.navigate('meal');
-    }
-
+export function MealComponent({ title, time, status, ...rest}: MealComponentProps) {
     return (
-      <Container onPress={handleGoToMeal}>
+      <Container {...rest}>
         <HourText>
           {time}
         </HourText>

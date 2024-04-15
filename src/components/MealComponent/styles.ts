@@ -4,7 +4,7 @@ type StatusStyleProps = {
   status: boolean;
 };
 
-export const Container = styled.Pressable`
+export const Container = styled.TouchableOpacity`
   width: 100%;
 
   align-items: center;

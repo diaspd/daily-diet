@@ -18,7 +18,7 @@ import { formatDate } from '@utils/formatDate';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export type Meal = {
+export type MealType= {
   id: string;
   title: string;
   date: number;
@@ -28,7 +28,7 @@ export type Meal = {
 
 export interface MealProps {
   title: string;
-  data: Meal[];
+  data: MealType[];
 }
 
 export function Home() {
@@ -42,9 +42,9 @@ export function Home() {
 
   // AsyncStorage.clear();
 
-  // function handleGoToMeal(meal: Meal) {
-  //   navigation.navigate('meal', { meal });
-  // }
+  function handleGoToMeal(meal: MealType) {
+    navigation.navigate('meal', { meal });
+  }
 
   useFocusEffect(
     useCallback(() => {
@@ -86,7 +86,7 @@ export function Home() {
             title={meal.title}
             time={formatDate(meal.date, 'time')}
             status={meal.isOnDiet ? true : false}
-            // onPress={() => handleGoToMeal(meal)}
+            onPress={() => handleGoToMeal(meal)}
           />
         )}
         renderSectionHeader={({ section: { title } }) => (

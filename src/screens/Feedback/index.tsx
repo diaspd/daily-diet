@@ -14,12 +14,13 @@ type RouteParams = {
 export function Feedback() {
   const navigation = useNavigation()
   const route = useRoute()
+  
+  const { isOnDiet } = route.params as RouteParams;
 
   function handleGoHome() {
     navigation.navigate('home');
   }
-  const { isOnDiet } = route.params as RouteParams;
-
+  
   return (
     <Container>   
       {isOnDiet === true ? (

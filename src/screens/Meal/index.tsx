@@ -15,22 +15,31 @@ import { Header } from '@components/Header';
 import { useTheme } from 'styled-components/native';
 import { Button } from '@components/Button';
 
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { PencilLine, Trash } from 'phosphor-react-native';
+import { MealType } from '@screens/Home';
+import { formatDate } from '@utils/formatDate';
+
+type RouteParams = {
+  meal: MealType
+}
 
 export function Meal() {
 const { COLORS } = useTheme();
+const route = useRoute()
 
 const navigation = useNavigation()
+
+const { meal } = route.params as RouteParams;
 
 function handleGoToEditMeal() {
   navigation.navigate('edit')
 }
 
 return (
-  <Container>
+  <Container variant={meal.isOnDiet ? true : false }>
     <HeaderContent>
-      <Header isBackButtonVisible type='TERTIARY'/>
+      <Header isBackButtonVisible type={meal.isOnDiet === true ? 'PRIMARY' : 'SECONDARY'}/>
 
       <Title>
         Refeição
@@ -38,22 +47,24 @@ return (
     </HeaderContent>
   
     <MealContainer>
-      <MealTitle>Sanduíche</MealTitle>
+      <MealTitle>{meal.title}</MealTitle>
 
       <MealDescription>
-        Sanduíche de pão integral com atum e salada de alface e tomate
+        {meal.description}
       </MealDescription>
     
       <DateTimeTitle>Data e hora</DateTimeTitle>
 
       <MealDescription>
-        12/08/2022 às 16:00
+        {formatDate(meal.date, 'date')} 
+          {''} às {''}
+        {formatDate(meal.date,'time')}
       </MealDescription>
 
       <Tag>
-        <TagStatus />
+        <TagStatus variant={meal.isOnDiet ? true : false }/>
         <TagText>
-          dentro da dieta
+          {meal.isOnDiet ? 'dentro da dieta' : 'fora da dieta'}
         </TagText>
       </Tag>
 

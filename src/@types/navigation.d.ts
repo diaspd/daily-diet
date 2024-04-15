@@ -1,3 +1,5 @@
+import { MealType } from "@screens/Home";
+
 export declare global {
   namespace ReactNavigation {
     interface RootParamList {
@@ -5,7 +7,7 @@ export declare global {
       new: undefined;
       statistics: undefined;
       feedback: { isOnDiet: boolean };
-      meal: undefined;
+      meal: { meal: MealType };
       edit: undefined;
     }
   }

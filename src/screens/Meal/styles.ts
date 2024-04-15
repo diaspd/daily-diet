@@ -1,10 +1,18 @@
 import { SafeAreaView } from "react-native";
 import styled, { css, useTheme } from "styled-components/native";
 
-export const Container = styled(SafeAreaView)`
+type Props = {
+  variant: boolean;
+};
+
+export const Container = styled(SafeAreaView)<Props>`
   flex: 1;
   background-color: ${() => useTheme().COLORS.GRAY_300};
   padding-top: 60px;
+  background-color: ${({ theme, variant }) =>
+    variant === true
+      ? theme.COLORS['GREEN_300']
+      : theme.COLORS['RED_300']};
 `;
 
 export const HeaderContent = styled.View`
@@ -61,7 +69,8 @@ export const Tag = styled.View`
   background-color: ${() => useTheme().COLORS.GRAY_300};
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: start;
+  padding-left: 15px;
   align-items: center;
   height: 34px;
   width: 45%;
@@ -70,11 +79,14 @@ export const Tag = styled.View`
   border-radius: 10000px;
 `
 
-export const TagStatus = styled.View`
+export const TagStatus = styled.View<Props>`
   height: 10px;
   width: 10px;
   border-radius: 10000px;
-  background-color: ${() => useTheme().COLORS.GREEN_700};
+  background-color: ${({ theme, variant }) =>
+    variant === true
+      ? theme.COLORS['GREEN_700']
+      : theme.COLORS['RED_700']};
 `
 
 export const TagText = styled.Text`
