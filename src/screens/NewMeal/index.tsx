@@ -129,12 +129,14 @@ export function NewMeal() {
               title='Sim' 
               type='PRIMARY'
               onPress={() => setMealOnDiet(true)}
+              isActive={mealOnDiet === true}
             />
 
             <SelectButton 
               title='Não' 
               type='SECONDARY'
               onPress={() => setMealOnDiet(false)}
+              isActive={mealOnDiet === false}
             />
           </OptionContent>
 

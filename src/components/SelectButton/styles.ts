@@ -3,6 +3,7 @@ import styled, { css } from "styled-components/native";
 
 export type ButtonDietTypeStyleProps = {
   type: 'PRIMARY' | 'SECONDARY';
+  isActive?: boolean;
 }
 
 type Props = ButtonDietTypeStyleProps;
@@ -17,10 +18,17 @@ export const Container = styled.TouchableOpacity<Props>`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: ${() => useTheme().COLORS.GRAY_300};
-    ${({ theme, type }) => css`
-        background-color: ${type === 'PRIMARY' ? theme.COLORS.GREEN_300 : theme.COLORS.RED_300};
-        border: 1px solid ${type === 'PRIMARY' ? theme.COLORS.GREEN_700 : theme.COLORS.RED_700};
+    ${({ theme, type, isActive }) => css`
+      background-color: ${
+        isActive ? true && type === 'PRIMARY' 
+          ? theme.COLORS.GREEN_300 : theme.COLORS.RED_300 
+          : theme.COLORS.GRAY_300
+        };
+      border: 1px solid ${
+        isActive ? true && type === 'PRIMARY' 
+          ? theme.COLORS.GREEN_700 : theme.COLORS.RED_700 
+          : theme.COLORS.GRAY_300
+        };
     `
     };
 `
