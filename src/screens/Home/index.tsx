@@ -14,9 +14,10 @@ import { Alert, SectionList } from 'react-native';
 import { MealComponent } from '@components/MealComponent';
 import { MEAL_COLLECTION } from '@storage/storageConfig';
 import { EmptyList } from '@components/EmptyList';
-import { formatDate } from '@utils/formatDate';
+import { dateFormat } from '@utils/dateFormat';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { percentageFormat } from '@utils/percentageFormat';
 
 export type MealType= {
   id: string;
@@ -36,15 +37,29 @@ export function Home() {
   const navigation = useNavigation()
   const { COLORS } = useTheme();
 
+  const meals = meal.map((meal) => meal.data).flat();
+
+  const totalMealsInDiet = meals.filter((meal) => meal.isOnDiet).length;
+  const totalMeals = meals.length;
+
+  const formattedPercentageInDiet = percentageFormat(
+    totalMealsInDiet,
+    totalMeals
+  );
+
+  function handleGoToStatistics() {
+    navigation.navigate('statistics');
+  }
+
   function handleGoToNewMeal() {
     navigation.navigate('new');
   }
-
-  // AsyncStorage.clear();
-
+  
   function handleGoToMeal(meal: MealType) {
     navigation.navigate('meal', { meal });
   }
+  
+  // AsyncStorage.clear();
 
   useFocusEffect(
     useCallback(() => {
@@ -68,7 +83,7 @@ export function Home() {
     <Container>
       <Header isLogoVisible isAvatarVisible />
       
-      <Percentage title={'90,00'} />
+      <Percentage title={totalMeals > 0 ? formattedPercentageInDiet : '0,00%'} onPress={handleGoToStatistics}/>
 
       <Label>Refeições</Label>
       
@@ -84,7 +99,7 @@ export function Home() {
         renderItem={({ item: meal }) => (
           <MealComponent
             title={meal.title}
-            time={formatDate(meal.date, 'time')}
+            time={dateFormat(meal.date, 'time')}
             status={meal.isOnDiet ? true : false}
             onPress={() => handleGoToMeal(meal)}
           />

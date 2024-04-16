@@ -7,7 +7,7 @@ export function Statistics() {
   return (
     <Container>
       <HeaderContainer>
-        <Header isBackButtonVisible type='PRIMARY'/>
+        <Header isBackButtonVisible type='PRIMARY' style={{ marginTop: 50}}/>
 
         <Title>
           90,00%

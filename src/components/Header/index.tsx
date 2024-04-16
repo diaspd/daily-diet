@@ -6,15 +6,16 @@ import logoImg from '@assets/logo.png';
 import AvatarImg from '@assets/icons/avatar.png';
 
 import { useNavigation } from "@react-navigation/native";
+import { ViewProps } from "react-native";
 
-type BackButtonProps = {
+type BackButtonProps = ViewProps & {
   isBackButtonVisible?: boolean;
   isLogoVisible?: boolean;
   isAvatarVisible?: boolean;
   type?: ButtonIconTypeStyleProps;
 }
 
-export function Header({ type = 'PRIMARY', isBackButtonVisible = false, isLogoVisible = false, isAvatarVisible = false }: BackButtonProps) {
+export function Header({ type = 'PRIMARY', isBackButtonVisible = false, isLogoVisible = false, isAvatarVisible = false, ...rest }: BackButtonProps) {
     const navigation = useNavigation()
 
     function handleGoBack() {
@@ -22,7 +23,7 @@ export function Header({ type = 'PRIMARY', isBackButtonVisible = false, isLogoVi
     }
   
     return (
-      <Container>
+      <Container {...rest}>
         { isBackButtonVisible &&  
           (
             <BackButton onPress={handleGoBack}>

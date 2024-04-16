@@ -3,12 +3,9 @@ import styled, { css, useTheme } from "styled-components/native";
 
 export const Container = styled(SafeAreaView)`
   flex: 1;
-  background-color: ${() => useTheme().COLORS.GREEN_300};
 `;
 
 export const HeaderContainer = styled.View`
-  margin-top: 60px;
-
   padding: 0 24px;
   background-color: ${() => useTheme().COLORS.GREEN_300};
 `

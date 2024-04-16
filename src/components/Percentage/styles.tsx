@@ -8,7 +8,7 @@ export type ButtonIconStyleProps = {
   type: ButtonIconTypeStyleProps;
 }
 
-export const Container = styled(TouchableOpacity)`
+export const Container = styled(TouchableOpacity)<ButtonIconStyleProps>`
   width: 100%;
   height: 112px;
   padding: 16px 24px;
@@ -19,7 +19,7 @@ export const Container = styled(TouchableOpacity)`
   justify-content: center;
   align-items: center;
 
-  background-color: ${() => useTheme().COLORS.GREEN_300};
+  background-color: ${({ type }) => type === 'PRIMARY' ? useTheme().COLORS.GREEN_300 : type === 'SECONDARY' ? useTheme().COLORS.RED_300 : type === 'TERTIARY' ? useTheme().COLORS.GRAY_700 : undefined};
 `;
 
 

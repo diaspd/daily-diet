@@ -1,13 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MEAL_COLLECTION } from '@storage/storageConfig';
-import { formatDate } from '@utils/formatDate';
+import { dateFormat } from '@utils/dateFormat';
 import { mealsGetAll } from './mealsGetAll';
 
 export async function mealDelete(id: string, date: number) {
   try {
     const storageData = await mealsGetAll();
     const dataByDate = storageData.find(
-      (item) => item.title === formatDate(date, 'date')
+      (item) => item.title === dateFormat(date, 'date')
     );
 
     if (dataByDate) {

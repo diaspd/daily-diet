@@ -19,7 +19,7 @@ import { SelectButton } from '@components/SelectButton';
 import { DescriptionContainer, NameContainer } from '@screens/NewMeal/styles';
 import { MealType } from '@screens/Home';
 import { useState } from 'react';
-import { formatDate } from '@utils/formatDate';
+import { dateFormat } from '@utils/dateFormat';
 import { Alert } from 'react-native';
 import { DateTimePickerAndroid, DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import { editMeal } from '@storage/meal/mealEdit';
@@ -112,7 +112,7 @@ export function EditMeal() {
         <DateTimeContent>
           <Label>Data</Label>
           <Input 
-            defaultValue={formatDate(date, 'date')}
+            defaultValue={dateFormat(date, 'date')}
             onPressIn={() => showDateOrTimePicker('date')}
           />
         </DateTimeContent>
@@ -120,7 +120,7 @@ export function EditMeal() {
         <DateTimeContent>
           <Label>Hora</Label>
           <Input 
-            defaultValue={formatDate(date, 'time')}
+            defaultValue={dateFormat(date, 'time')}
             onPressIn={() => showDateOrTimePicker('time')}
           />
         </DateTimeContent>

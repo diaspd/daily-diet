@@ -18,7 +18,7 @@ import { Button } from '@components/Button';
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { PencilLine, Trash } from 'phosphor-react-native';
 import { MealType } from '@screens/Home';
-import { formatDate } from '@utils/formatDate';
+import { dateFormat } from '@utils/dateFormat';
 import { useState } from 'react';
 import { Modal } from '@components/Modal';
 
@@ -60,9 +60,9 @@ return (
       <DateTimeTitle>Data e hora</DateTimeTitle>
 
       <MealDescription>
-        {formatDate(meal.date, 'date')} 
+        {dateFormat(meal.date, 'date')} 
           {''} às {''}
-        {formatDate(meal.date,'time')}
+        {dateFormat(meal.date,'time')}
       </MealDescription>
 
       <Tag>

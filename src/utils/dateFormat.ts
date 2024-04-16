@@ -1,4 +1,4 @@
-export function formatDate(dateInMiliseconds: number, type: 'date' | 'time') {
+export function dateFormat(dateInMiliseconds: number, type: 'date' | 'time') {
   switch (type) {
     case 'date':
       const unformattedDate = new Date(dateInMiliseconds);
