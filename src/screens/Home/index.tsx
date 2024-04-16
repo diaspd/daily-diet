@@ -83,7 +83,10 @@ export function Home() {
     <Container>
       <Header isLogoVisible isAvatarVisible />
       
-      <Percentage title={totalMeals > 0 ? formattedPercentageInDiet : '0,00%'} onPress={handleGoToStatistics}/>
+      <Percentage 
+        title={totalMeals > 0 ? formattedPercentageInDiet : '0,00%'} 
+        onPress={handleGoToStatistics}
+      />
 
       <Label>Refeições</Label>
       

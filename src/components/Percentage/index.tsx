@@ -15,7 +15,7 @@ export function Percentage({title, type,...rest }: PercentageProps) {
   }
 
   return (
-    <Container type={type} {...rest}>
+    <Container {...rest} type={type}>
       <StatisticsIcon weight='bold' type={type} />
 
       <Title>

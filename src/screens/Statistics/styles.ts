@@ -1,13 +1,19 @@
 import { SafeAreaView } from "react-native";
 import styled, { css, useTheme } from "styled-components/native";
 
+export type HeaderStyleProps = 'PRIMARY' | 'SECONDARY' | "TERTIARY";
+
+export type StyleProps = {
+  type: HeaderStyleProps;
+}
+
 export const Container = styled(SafeAreaView)`
   flex: 1;
 `;
 
-export const HeaderContainer = styled.View`
+export const HeaderContainer = styled.View<StyleProps>`
   padding: 0 24px;
-  background-color: ${() => useTheme().COLORS.GREEN_300};
+  background-color: ${({ type }) => type === 'PRIMARY' ? useTheme().COLORS.GREEN_300 : type === 'SECONDARY' ? useTheme().COLORS.RED_300 : type === 'TERTIARY' ? useTheme().COLORS.GRAY_700 : undefined};
 `
 
 export const StatisticsContainer = styled.View`

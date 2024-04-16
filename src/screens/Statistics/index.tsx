@@ -1,16 +1,58 @@
-import { Container, HeaderContainer, StatisticsContainer, StatisticsTitle, StatisticsContent, Description, SuccessContainer, FailContainer, LastStatistics } from './styles';
+import { Container, HeaderContainer, StatisticsContainer, StatisticsTitle, StatisticsContent, Description, SuccessContainer, FailContainer, LastStatistics, HeaderStyleProps } from './styles';
 
 import { Header } from '@components/Header';
 import { Desciption, Title } from '@components/Percentage/styles';
+import { MealProps } from '@screens/Home';
+import { mealsGetAll } from '@storage/meal/mealsGetAll';
+import { useCallback, useState } from 'react';
 
-export function Statistics() {
+import { useFocusEffect } from '@react-navigation/native';
+import { bestStreak } from '@utils/bestStreak';
+import { percentageFormat } from '@utils/percentageFormat';
+
+export function Statistics(type: HeaderStyleProps) {
+  const [data, setData] = useState<MealProps[]>([]);
+
+  async function fetchStatistics() {
+    try{
+      const fetchData = await mealsGetAll();
+      setData(fetchData);
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+
+  useFocusEffect(useCallback(() => {
+      fetchStatistics();
+  }, []))
+
+  const meals = data.map((meal) => meal.data).flat();
+
+  const bestStreakOnDiet = bestStreak(meals);
+
+  const totalMeals = meals.length;
+  const totalMealsOnDiet = meals.filter((meal) => meal.isOnDiet).length;
+  const totalMealsOutDiet = meals.length - totalMealsOnDiet;
+
+  const formattedPercentageInDiet = percentageFormat(
+    totalMealsOnDiet,
+    totalMeals
+  );
+
+  if(parseFloat(totalMeals > 0 ? formattedPercentageInDiet : '0,00%') <= parseFloat('50,00')) {
+    type="SECONDARY"
+  } else {
+    type="PRIMARY"
+  }
+
   return (
     <Container>
-      <HeaderContainer>
-        <Header isBackButtonVisible type='PRIMARY' style={{ marginTop: 50}}/>
+      <HeaderContainer type={type}>
+        <Header isBackButtonVisible type={type} style={{ marginTop: 50}}/>
 
         <Title>
-          90,00%
+          {totalMeals > 0 ? formattedPercentageInDiet : '0,00%'}
         </Title>
 
         <Desciption>
@@ -25,7 +67,7 @@ export function Statistics() {
 
           <StatisticsContent>
             <Title>
-              22
+              {bestStreakOnDiet}
             </Title>
 
             <Description>
@@ -35,7 +77,7 @@ export function Statistics() {
 
           <StatisticsContent>
             <Title>
-              109
+              {totalMeals}
             </Title>
 
             <Description>
@@ -46,7 +88,7 @@ export function Statistics() {
           <LastStatistics>
             <SuccessContainer>
               <Title>
-                99
+                {totalMealsOnDiet}
               </Title>
 
               <Description>
@@ -56,7 +98,7 @@ export function Statistics() {
 
             <FailContainer>
               <Title>
-                10
+                {totalMealsOutDiet}
               </Title>
 
               <Description>
