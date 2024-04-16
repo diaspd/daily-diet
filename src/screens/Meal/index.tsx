@@ -19,12 +19,16 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { PencilLine, Trash } from 'phosphor-react-native';
 import { MealType } from '@screens/Home';
 import { formatDate } from '@utils/formatDate';
+import { useState } from 'react';
+import { Modal } from '@components/Modal';
 
 type RouteParams = {
   meal: MealType
 }
 
 export function Meal() {
+const [isModalVisible, setModalVisible] = useState(false);
+
 const { COLORS } = useTheme();
 const route = useRoute()
 
@@ -68,20 +72,29 @@ return (
         </TagText>
       </Tag>
 
-
-        <Button 
-          title='Editar refeição' 
-          icon={<PencilLine size={24} color={COLORS.GRAY_100}/>}
-          style={{ marginTop: 'auto' }}
-          onPress={handleGoToEditMeal}
+      {isModalVisible && 
+        <Modal 
+          isModalVisible={isModalVisible} 
+          setModalVisible={setModalVisible} 
+          id={meal.id}
+          date={meal.date}
         />
+      }
 
-        <Button 
-          title='Excluir refeição' 
-          icon={<Trash />}
-          variant='SECONDARY'
-          style={{marginBottom: 28}}
-        />
+      <Button 
+        title='Editar refeição' 
+        icon={<PencilLine size={24} color={COLORS.GRAY_100}/>}
+        style={{ marginTop: 'auto' }}
+        onPress={handleGoToEditMeal}
+      />
+
+      <Button 
+        title='Excluir refeição' 
+        icon={<Trash />}
+        variant='SECONDARY'
+        style={{marginBottom: 28}}
+        onPress={() => setModalVisible(true)}
+      />
     </MealContainer>
   </Container>
 );
