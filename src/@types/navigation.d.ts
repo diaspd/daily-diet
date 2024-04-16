@@ -8,7 +8,7 @@ export declare global {
       statistics: undefined;
       feedback: { isOnDiet: boolean };
       meal: { meal: MealType };
-      edit: undefined;
+      edit: { meal: MealType };
     }
   }
 }

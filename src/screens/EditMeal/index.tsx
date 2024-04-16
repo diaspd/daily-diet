@@ -14,19 +14,34 @@ import { Header } from '@components/Header';
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
 
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { SelectButton } from '@components/SelectButton';
 import { DescriptionContainer, NameContainer } from '@screens/NewMeal/styles';
+import { MealType } from '@screens/Home';
+import { useState } from 'react';
+import { formatDate } from '@utils/formatDate';
 
-export function EditMeal() {
-const navigation = useNavigation()
-
-function handleGoToFeedback() {
-  navigation.navigate('home');
+type RouteParams = {
+  meal: MealType
 }
 
-return (
-  <Container>
+export function EditMeal() {
+  const route = useRoute()
+  const { meal } = route.params as RouteParams;
+  
+  const [mealName, setMealName] = useState(meal.title);
+  const [mealDescription, setMealDescription] = useState(meal.description);
+  const [mealOnDiet, setMealOnDiet] = useState(meal.isOnDiet);
+  const [date, setDate] = useState<number>(meal.date);
+
+  const navigation = useNavigation()
+
+  function handleGoToFeedback() {
+    navigation.navigate('home');
+  }
+
+  return (
+    <Container>
     <HeaderContent>
       <Header isBackButtonVisible type='TERTIARY'/>
 
@@ -38,7 +53,10 @@ return (
     <StatisticsContainer>
         <NameContainer>
           <Label >Nome</Label>
-          <Input />
+          <Input 
+            value={mealName}
+            defaultValue={mealName}
+          />
         </NameContainer>
 
         <Label>Descrição</Label>
@@ -47,6 +65,8 @@ return (
             multiline={true}
             textAlignVertical={'top'}
             maxLength={220}
+            value={mealDescription}
+            defaultValue={mealDescription}
           />
         </DescriptionContainer>
 
@@ -54,12 +74,16 @@ return (
       <DateTimeContainer>
         <DateTimeContent>
           <Label>Data</Label>
-          <Input />
+          <Input 
+            defaultValue={formatDate(date, 'date')}
+          />
         </DateTimeContent>
 
         <DateTimeContent>
           <Label>Hora</Label>
-          <Input />
+          <Input 
+            defaultValue={formatDate(date, 'time')}
+          />
         </DateTimeContent>
       </DateTimeContainer>
 
@@ -67,8 +91,19 @@ return (
     <OptionContainer>
       <Label>Está dentro da dieta?</Label>
         <OptionContent>
-          <SelectButton title='Sim' type='PRIMARY'/>
-          <SelectButton title='Não' type='SECONDARY'/>
+          <SelectButton 
+            title='Sim' 
+            type='PRIMARY'
+            onPress={() => setMealOnDiet(true)}
+            isActive={mealOnDiet === true}
+          />
+
+          <SelectButton 
+            title='Não' 
+            type='SECONDARY'
+            onPress={() => setMealOnDiet(false)}
+            isActive={mealOnDiet === false}
+          />
         </OptionContent>
 
         <Button 
@@ -79,5 +114,5 @@ return (
       </OptionContainer>
     </StatisticsContainer>
   </Container>
-);
+  );
 }

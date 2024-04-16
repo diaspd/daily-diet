@@ -5,7 +5,7 @@ import { Statistics } from "@screens/Statistics";
 import { NewMeal } from "@screens/NewMeal";
 import { Feedback } from "@screens/Feedback";
 import { Meal } from "@screens/Meal";
-import { EditMeal } from "@screens/EditalMeal";
+import { EditMeal } from "@screens/EditMeal";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 

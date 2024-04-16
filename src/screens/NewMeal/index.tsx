@@ -26,13 +26,13 @@ import { formatDate } from '@utils/formatDate';
 import { DateTimePickerAndroid, DateTimePickerEvent } from '@react-native-community/datetimepicker';
 
 export function NewMeal() {
-  const navigation = useNavigation()
   const [mealName, setMealName] = useState('');
   const [mealDescription, setMealDescription] = useState('');
-  const [mealOnDiet, setMealOnDiet] = useState(false);
+  const [mealOnDiet, setMealOnDiet] = useState<boolean>();
   const [date, setDate] = useState<number>(new Date().getTime());
-
+  
   const mealId = useId();
+  const navigation = useNavigation()
   
   function onChange(evt: DateTimePickerEvent, selectedDate?: Date) {
     const formatedDate = selectedDate!.getTime();

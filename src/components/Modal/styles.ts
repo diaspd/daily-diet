@@ -10,7 +10,7 @@ export const Overlay = styled.View`
 export const Container = styled.View`
   width: 355px;
   height: 225px;
-  padding: 40px 24px 24px;
+  padding: 40px 24px;
   background-color: ${({ theme }) => theme.COLORS['GRAY_100']};
   border-radius: 8px;
   align-items: center;

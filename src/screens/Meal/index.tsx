@@ -37,7 +37,7 @@ const navigation = useNavigation()
 const { meal } = route.params as RouteParams;
 
 function handleGoToEditMeal() {
-  navigation.navigate('edit')
+  navigation.navigate('edit', { meal })
 }
 
 return (
@@ -72,14 +72,12 @@ return (
         </TagText>
       </Tag>
 
-      {isModalVisible && 
-        <Modal 
-          isModalVisible={isModalVisible} 
-          setModalVisible={setModalVisible} 
-          id={meal.id}
-          date={meal.date}
-        />
-      }
+      <Modal 
+        isModalVisible={isModalVisible} 
+        setModalVisible={setModalVisible} 
+        id={meal.id}
+        date={meal.date}
+      />      
 
       <Button 
         title='Editar refeição' 
