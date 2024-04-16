@@ -28,7 +28,7 @@ import { DateTimePickerAndroid, DateTimePickerEvent } from '@react-native-commun
 export function NewMeal() {
   const [mealName, setMealName] = useState('');
   const [mealDescription, setMealDescription] = useState('');
-  const [mealOnDiet, setMealOnDiet] = useState<boolean>();
+  const [isMealOnDiet, setIsMealOnDiet] = useState<boolean | null>(null);
   const [date, setDate] = useState<number>(new Date().getTime());
   
   const mealId = useId();
@@ -54,12 +54,19 @@ export function NewMeal() {
       return Alert.alert('Nova Refeição', 'Preencha o nome e a descrição.');
     }
 
+    if (isMealOnDiet == null) {
+      return Alert.alert(
+        'Nova Refeição',
+        'Selecione se está dentro ou fora da dieta.'
+      );
+    }
+
     const newMeal = {
       id: mealId,
       title: mealName,
       description: mealDescription,
       date: date,
-      isOnDiet: mealOnDiet === true ? true : false,
+      isOnDiet: isMealOnDiet ? true : false,
     };
 
     try {
@@ -71,7 +78,7 @@ export function NewMeal() {
       }
 
     navigation.navigate('feedback', {
-      isOnDiet: mealOnDiet ? true : false,
+      isOnDiet: isMealOnDiet ? true : false,
     });
   }
 
@@ -130,15 +137,15 @@ export function NewMeal() {
             <SelectButton 
               title='Sim' 
               type='PRIMARY'
-              onPress={() => setMealOnDiet(true)}
-              isActive={mealOnDiet === true}
+              onPress={() => setIsMealOnDiet(true)}
+              isActive={isMealOnDiet === true}
             />
 
             <SelectButton 
               title='Não' 
               type='SECONDARY'
-              onPress={() => setMealOnDiet(false)}
-              isActive={mealOnDiet === false}
+              onPress={() => setIsMealOnDiet(false)}
+              isActive={isMealOnDiet === false}
             />
           </OptionContent>
 
