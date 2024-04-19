@@ -25,7 +25,7 @@ Clone the project and access the folder.
 
 ```bash
 # Clone the project
-$ git clone 
+$ git clone https://github.com/diaspd/daily-diet.git
 
 # Install the dependencies
 $ npm install
