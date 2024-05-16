@@ -48,7 +48,7 @@ This project was developed with the following technologies:
 </br>
 
 ## 📄 Project
-💰 .
+💰 A mobile app made with to people stay in diet, creating meals, editing, and deleting. Besides the dashboard with the statistics.
 
 <br></br>
 
