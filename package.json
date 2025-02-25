@@ -1,6 +1,7 @@
 {
   "name": "daily-diet",
   "version": "1.0.0",
+  "author": "pedro_dias",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
